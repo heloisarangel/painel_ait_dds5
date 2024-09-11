@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from './Saudacao.module.css';
 
 // Criando função Saudacao
 function Saudacao() {
@@ -52,10 +53,11 @@ function Saudacao() {
     }
 
     return (
-        <div>
+        <div className={styles.saudacao}>
             {saudacaoPeriodo}
         </div>
     )
 }
 
 export default Saudacao;
+
