@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './Home.module.css';
 import Cabecalho from '../layout/Cabecalho';
-import TabelaAula from '../TabelaAulas/TabelaAula';
-import AbreviaAmbiente from '../TabelaAulas/AbreviaAmbiente';
+import TabelaAulas from "../TabelaAulas/TabelaAula";
+import LateralImagens from '../LateralImagens/LateralImagens';
 
 
 function Home() {
   return (
   <>
   <Cabecalho/>
-  <TabelaAula/>
-  <AbreviaAmbiente/>
+  <TabelaAulas/>
+  <LateralImagens/>
   </>
   )
 }
