@@ -1,8 +1,13 @@
 import React from 'react'
+import Navbar from '../layout/Navbar'
+import ImportCSV from './ImportCSV';
 
 function GestaoUsuario() {
   return (
-    <div>GestaoUsuario</div>
+    <div>
+      <Navbar/>
+  ImportCSV
+    </div>
   )
 }
 
