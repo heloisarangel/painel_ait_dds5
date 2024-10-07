@@ -32,17 +32,6 @@
       "unidade_curricular": "DESENVOLVIMENTO DE SISTEMAS DE AUTOMAÇÃO MECÂNICA (CH: 100.0000)",
       "ambiente": "VTRIA-3-LAB-3003",
       "chave": null
-    },
-    {
-      "id": "921e",
-      "data": "2024-08-29T03:00:00.000Z",
-      "data_hora_inicio": "2024-08-29T21:30:00.000Z",
-      "data_hora_fim": "2024-08-30T01:00:00.000Z",
-      "turma": "AIT-DDS-5",
-      "instrutor": "HELOISA RANGEL ",
-      "unidade_curricular": "INTERNET DAS COISAS",
-      "ambiente": "VTRA-LAB-5-5109",
-      "chave": null
     }
   ],
   "imagens": [
