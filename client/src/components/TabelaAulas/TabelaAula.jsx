@@ -4,7 +4,7 @@ import styles from './TabelaAulas.module.css';
 import AbreviaAmbiente from './AbreviaAmbiente';
 import { Link } from "react-router-dom"
 
-function TabelaAula({ tipo }) {
+function TabelaAula({ tipo, onDeleteSuccess }) {
     const [aulas, setAulas] = useState([])
 
     useEffect(() => {
@@ -46,7 +46,8 @@ function TabelaAula({ tipo }) {
 
             } else {
                 setAulas(aulas.filter(aula => aula.id !== id));
-                alert('Aula Deletada');
+                //alert('Aula Deletada');
+                onDeleteSuccess();
             }
 
         } catch (error) {

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
-function FormAula({ titulo, textoBotao, handleSubmit }) {
+function FormAula({ titulo, textoBotao, handleSubmit,id,tipo}) {
+    const navigate = useNavigate();
     const [dataAula, setDataAula] = useState('');
     const [horaInicio, setHoraInicio] = useState('');
     const [horaFim, setHoraFim] = useState('');
@@ -12,11 +14,14 @@ function FormAula({ titulo, textoBotao, handleSubmit }) {
     const [unidadeCurricular, setUnidadeCurricular] = useState('');
     const [ambiente, setAmbiente] = useState('');
 
-    useEffect(()=>{
-   if(id){
-    baixarAula(id);
-   }
-    },[]);
+    useEffect(() => {
+        if (id) {
+            console.log(id)
+            baixarAula(id);
+            setTimeout();
+            
+        }
+    }, []);
 
 
     async function baixarAula(id) {
@@ -32,7 +37,12 @@ function FormAula({ titulo, textoBotao, handleSubmit }) {
                 throw new Error('Erro ao buscar aula');
 
             } else {
-                console.log(JSON.stringify(resposta));
+                const respostaJSON =await resposta.json();
+               console.log(respostaJSON);
+               setTurma(respostaJSON.turma);
+               setInstrutor(respostaJSON.instrutor);
+               setUnidadeCurricular(respostaJSON.unidade_curricular);
+               setAmbiente(respostaJSON.ambiente)
             }
         } catch (error) {
             console.log(error)
@@ -52,9 +62,9 @@ function FormAula({ titulo, textoBotao, handleSubmit }) {
             chave: null
 
         }
-        handleSubmit(aula);
-
-
+        handleSubmit(aula,id);
+        navigate(`/gestao_aula/${tipo}s`);
+      
     }
 
 
