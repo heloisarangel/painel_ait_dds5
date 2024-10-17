@@ -53,7 +53,7 @@ function FormAula({ titulo, textoBotao, handleSubmit,id,tipo}) {
         e.preventDefault();
         const aula = {
             data: dataAula,
-            data_hora_inicio: horaInicio,
+            data_hora_inicio:` ${dataAula} ${horaInicio}` ,
             data_hora_fim: horaFim,
             turma: turma,
             instrutor: instrutor,
