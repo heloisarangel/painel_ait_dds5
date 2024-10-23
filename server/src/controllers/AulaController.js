@@ -1,5 +1,6 @@
 //Importando funções do AulaModel
 import { createAula, deleteAula, readAulas, updateAula, showOneAula } from "../models/AulaModel.js";
+import {isNullOrEmpty, verificaAula} from "../validations/AulaValidation.js";
 
 export async function criarAula(req, res) {
     //Ao ser chamado o criarAula controller virá no console
@@ -11,16 +12,21 @@ export async function criarAula(req, res) {
     //Exibindo corpo da requisição
     console.log(aula);
 
-    //Tentando criar aula
-    try {
-        const [status, resposta] = await createAula(aula);
-        res.status(status).json(resposta);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
-}
+    if(verificaAula(aula)){
+        res.status(400).json ({message: 'Todas as propriedades devem ser criadas'});
+      
+    }else {
+           //Tentando criar aula
+        try {
+            const [status, resposta] = await createAula(aula);
+            res.status(status).json(resposta);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    } 
 
+    }
 export async function mostrarAulas(req, res) {
     //Ao ser chamado o criarAula controller virá no console
     console.log('AulaController mostrarAulas');
@@ -42,6 +48,11 @@ export async function atualizarAula(req, res) {
     //Criando constante com a requisição
     const aula = req.body;
     const { id } = req.params;
+    if (verificaAula(aula) || isNullOrEmpty(id)) {
+        res.status(400).json({message: 'Todas as propriedades devem ser preenchidas'});
+    }else{
+
+    }
 
     //Tentando mostrar aulas
     try {
@@ -59,6 +70,10 @@ export async function excluirAula(req, res) {
 
     //Criando constante com a requisição
     const { id } = req.params;
+    if (isNullOrEmpty(id)){
+        res.status(400).json({message: 'O id deve ser informado'})
+    }else{
+    
 
     //Tentando deletar aula
     try {
@@ -68,6 +83,7 @@ export async function excluirAula(req, res) {
         console.log(error);
         res.status(500).json(error);
     }
+}
 }
 
 export async function mostrarAula (req, res) {

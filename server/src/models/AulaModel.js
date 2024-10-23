@@ -33,8 +33,11 @@ export async function createAula(aula) {
    // Executando query no banco
    try {
       const [retorno] = await conexao.query(sql, params);
-      console.log('Aula Cadastrada');
-      return [201, 'Aula Cadastrada'];
+      console.log("Autualizando Aula");
+      if (retorno.affectedRows < 1){
+         return [404, {message: "Aula não encontrada"}]
+      }
+      return [200, {message: "Aula Atualiza"}];
    } catch (error) {
       console.log(error);
       return [500, error];
@@ -121,7 +124,10 @@ export async function deleteAula(id) {
    try {
       const [retorno] = await conexao.query(sql, params);
       console.log("Deletando Aula");
-      return [200, retorno];
+      if(retorno.affectedRows < 1){
+         return [404, { message: "Aula não encontrada"}];
+      }
+      return [200, {message:"Aula excluida"}];
    } catch (error) {
       console.log(error);
       return [500, error];
